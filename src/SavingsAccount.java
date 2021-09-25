@@ -68,18 +68,18 @@ public class SavingsAccount {
 		System.out.print("\nAccount Holder: " + name + "\nAccount Number : " + accNum  + "\nAccount Holder's Address : " + address + "\nAccount Holder's Phone Number : " + phoneNum + "\nAccount Balance : " + balance );
 	}
 
-	public void transferAmount(CheckingAccount targetAcc, double num) 
+	public boolean transferAmount(SavingsAccount targetAcc, double num) 
 	{	
 		if(num > balance)
 		{
-			System.out.print("Insufficient funds!!!");
+			return false;
 		}
 		
 		else
 		{
 			this.withdraw(num);
 			targetAcc.deposit(num);
-			System.out.print("Transaction Successful.");
+			return true;
 		}	
 	}
 	
@@ -95,8 +95,13 @@ public class SavingsAccount {
 			return 0;
 	}
 	
+	public double calculateInterest()
+	{
+		return ((balance*interest) + balance);
+	}
 	
-	public int get_accNumm()
+	
+	public int get_accNum()
 	{
 		return accNum;
 	}

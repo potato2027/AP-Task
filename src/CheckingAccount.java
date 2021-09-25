@@ -8,7 +8,7 @@ public class CheckingAccount {
 	private double tax;
 	
 	
-	public int get_accNumm()
+	public int get_accNum()
 	{
 		return accNum;
 	}
@@ -96,18 +96,18 @@ public class CheckingAccount {
 		System.out.print("\nAccount Holder: " + name + "\nAccount Number : " + accNum  + "\nAccount Holder's Address : " + address + "\nAccount Holder's Phone Number : " + phoneNum + "\nAccount Balance : " + balance );
 	}
 
-	public void transferAmount(CheckingAccount targetAcc, double num) 
+	public boolean transferAmount(CheckingAccount targetAcc, double num) 
 	{	
 		if(num > balance)
 		{
-			System.out.print("Insufficient funds!!!");
+			return false;
 		}
 		
 		else
 		{
 			this.withdraw(num);
 			targetAcc.deposit(num);
-			System.out.print("Transaction Successful.");
+			return true;
 		}
 	}
 	
